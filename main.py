@@ -4,13 +4,19 @@ import requests
 from telethon import TelegramClient, events
 from telethon.sessions import StringSession
 
-import os
 
-API_ID = int(os.environ.get("API_ID", "9269545"))
-API_HASH = os.environ.get("API_HASH", "5fa82903cf82b14e4e17c125a3a8bf80")
-SESSION_STRING = os.environ.get("SESSION_STRING", "1AZWarzsBu5Qb4V8qYzUo3xyJllH1X4meBDxMqCCGLlBy74KjxHMBwdgF9q76vbuD32yqTpyYvopSe3w03mEdBdN0Gwb7bNZ4AdXkMkrvsd-B5FUrhSESLA6cUsmdha58qxuBs77CcsU8E1w9Z5n9B_P2UVxpihMii-6-LF-dA8ZPQcN30de6eF-XZzv015ShjxkjH86js7bOWC72GoXI24kax8Ub2Uw-SPSNW8_27myMxFlftf0v8Y7o_Kb3QIaKTvsRArIztBrVfiUduJm-HaCFPOjKuV7WtqaLR9SNZvW8SEr1wYqqsvpUNuhKq21eaRLaHMKL1orRroKEOvvviuyzVUem8q4=")
-GROUP_ID = int(os.environ.get("GROUP_ID", "-1002273543161"))
-API_URL = os.environ.get("API_URL", "http://111.231.26.210:7755/qianxun/httpapi?wxid=wxid_5du2b25cz8jx22")
+# 配置信息
+API_ID = 9269545
+API_HASH = "5fa82903cf82b14e4e17c125a3a8bf80"
+SESSION_STRING = (
+    "1AZWarzsBu5Qb4V8qYzUo3xyJllH1X4meBDxMqCCGLlBy74KjxHMBwdgF9q76vbuD32yqTpyYvopSe3w03mEdBdN0Gwb7bNZ4AdXkMkrvsd-B5FUrhSESLA6cUsmdha58qxuBs77CcsU8E1w9Z5n9B_P2UVxpihMii-6-LF-dA8ZPQcN30de6eF-XZzv015ShjxkjH86js7bOWC72GoXI24kax8Ub2Uw-SPSNW8_27myMxFlftf0v8Y7o_Kb3QIaKTvsRArIztBrVfiUduJm-HaCFPOjKuV7WtqaLR9SNZvW8SEr1wYqqsvpUNuhKq21eaRLaHMKL1orRroKEOvvviuyzVUem8q4="
+)
+
+# Telegram 群组 ID
+GROUP_ID = -1002273543161
+
+# 转发消息的 API 接口地址
+API_URL = "http://111.231.26.210:7755/qianxun/httpapi?wxid=wxid_5du2b25cz8jx22"
 
 
 client = TelegramClient(StringSession(SESSION_STRING), API_ID, API_HASH)
