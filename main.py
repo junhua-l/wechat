@@ -4,12 +4,11 @@ import requests
 from telethon import TelegramClient, events
 from telethon.sessions import StringSession
 
-
 # 配置信息
-API_ID = 9269545
-API_HASH = "5fa82903cf82b14e4e17c125a3a8bf80"
+API_ID = 27076273
+API_HASH = "b5e3c3c174b3c52d879af80c21cc4173"
 SESSION_STRING = (
-    "1AZWarzsBu5Qb4V8qYzUo3xyJllH1X4meBDxMqCCGLlBy74KjxHMBwdgF9q76vbuD32yqTpyYvopSe3w03mEdBdN0Gwb7bNZ4AdXkMkrvsd-B5FUrhSESLA6cUsmdha58qxuBs77CcsU8E1w9Z5n9B_P2UVxpihMii-6-LF-dA8ZPQcN30de6eF-XZzv015ShjxkjH86js7bOWC72GoXI24kax8Ub2Uw-SPSNW8_27myMxFlftf0v8Y7o_Kb3QIaKTvsRArIztBrVfiUduJm-HaCFPOjKuV7WtqaLR9SNZvW8SEr1wYqqsvpUNuhKq21eaRLaHMKL1orRroKEOvvviuyzVUem8q4="
+    "1BVtsOLwBu0zKAQhQ8i4iEaNF0-qiPFp0qcIgARN6qfICnOQicV54b9mZneTlPPZc_bKumGfzU69q8I6pc1PflEegnejGjbORJvp8j4xk_83kC_gbXodzx-d_WRC_gbfOUnUco8ZG_uLF80YM5Vq5OYzLPvbJLNVdZVj8W4mSxraPQqDSK0LfYkuXQVnyUqUrklTdSJDqD51rwBRX9qASstyRMsal0sgPwa1Ds7pCG2HmuQWiRxykMSzPV9ZJ4Ch_M5bZ5xp2_Lm5cSHra9C8gsx-5I4NUAage79M-dIa6-qEI5yddg-s7CZGqzBWku6oaFjg1JLQtYLlbKcfJUZYPId3SzJKHqY="
 )
 
 # Telegram 群组 ID
@@ -17,7 +16,6 @@ GROUP_ID = -1002273543161
 
 # 转发消息的 API 接口地址
 API_URL = "http://111.231.26.210:7755/qianxun/httpapi?wxid=wxid_5du2b25cz8jx22"
-
 
 client = TelegramClient(StringSession(SESSION_STRING), API_ID, API_HASH)
 
