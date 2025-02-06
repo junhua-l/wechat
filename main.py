@@ -66,6 +66,8 @@ def process_message(text: str):
         # 添加市值和流动性，各自独立为一行
         if data["market_cap"] and data["liquidity"]:
             final_lines.append(f"📊市值: {data['market_cap']}, 💦流动性: {data['liquidity']}")
+        elif data["market_cap"]:
+            final_lines.append(f"📊市值: {data['market_cap']}")
 
         final_message = "\n".join(final_lines)
         address_message = data["address"].split(":", 1)[1].strip() if data["address"] else ""
@@ -152,16 +154,6 @@ async def new_message_handler(event):
         print("转发完整消息，API返回：", response_full.text)
     except Exception as e:
         print("调用 API 转发完整消息时发生异常：", e)
-    
-    # 第二次调用：单独转发代币地址（如果存在）
-    if address_message:
-        payload_address = common_payload.copy()
-        payload_address["data"]["msg"] = address_message
-        try:
-            response_addr = requests.post(API_URL, json=payload_address)
-            print("转发代币地址，API返回：", response_addr.text)
-        except Exception as e:
-            print("调用 API 转发代币地址时发生异常：", e)
 
 
 async def main():
