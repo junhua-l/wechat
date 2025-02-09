@@ -11,8 +11,10 @@ SESSION_STRING = (
     "1BVtsOLwBu0zKAQhQ8i4iEaNF0-qiPFp0qcIgARN6qfICnOQicV54b9mZneTlPPZc_bKumGfzU69q8I6pc1PflEegnejGjbORJvp8j4xk_83kC_gbXodzx-d_WRC_gbfOUnUco8ZG_uLF80YM5Vq5OYzLPvbJLNVdZVj8W4mSxraPQqDSK0LfYkuXQVnyUqUrklTdSJDqD51rwBRX9qASstyRMsal0sgPwa1Ds7pCG2HmuQWiRxykMSzPV9ZJ4Ch_M5bZ5xp2_Lm5cSHra9C8gsx-5I4NUAage79M-dIa6-qEI5yddg-s7CZGqzBWku6oaFjg1JLQtYLlbKcfJUZYPId3SzJKHqY="
 )
 
-# Telegram 群组 ID
+# Telegram 群组 ID（原群组）
 GROUP_ID = -1002273543161
+# 新增的 Telegram 群组 ID
+GROUP_ID_2 = -1002474567771
 
 # 转发消息的 API 接口地址
 API_URL = "http://111.231.26.210:7755/qianxun/httpapi?wxid=wxid_5du2b25cz8jx22"
@@ -127,11 +129,10 @@ def process_message(text: str):
 @client.on(events.NewMessage(chats=GROUP_ID))
 async def new_message_handler(event):
     """
-    监听群组新消息，进行格式处理后调用 API 转发消息。
-    同时单独转发代币地址。
+    监听原群组新消息，进行格式处理后调用 API 转发消息到 50565759304@chatroom
     """
     raw_text = event.message.message
-    print("接收到新消息：", raw_text)
+    print("接收到原群组新消息：", raw_text)
     
     # 对消息文本进行格式转换处理
     final_message, address_message = process_message(raw_text)
@@ -146,7 +147,6 @@ async def new_message_handler(event):
         }
     }
     
-    # 第一次调用：转发处理后的完整消息
     payload_full = common_payload.copy()
     payload_full["data"]["msg"] = final_message
     try:
@@ -154,6 +154,29 @@ async def new_message_handler(event):
         print("转发完整消息，API返回：", response_full.text)
     except Exception as e:
         print("调用 API 转发完整消息时发生异常：", e)
+
+
+@client.on(events.NewMessage(chats=GROUP_ID_2))
+async def new_message_handler_group2(event):
+    """
+    监听新增群组新消息，直接转发原始消息到 43166431601@chatroom（不进行格式处理）
+    """
+    raw_text = event.message.message
+    print("接收到新增群组新消息：", raw_text)
+    
+    # 构造直接转发的 API 请求数据
+    payload = {
+        "type": "sendText",
+        "data": {
+            "wxid": "43166431601@chatroom",
+            "msg": raw_text
+        }
+    }
+    try:
+        response = requests.post(API_URL, json=payload)
+        print("转发新增群组消息，API返回：", response.text)
+    except Exception as e:
+        print("调用 API 转发新增群组消息时发生异常：", e)
 
 
 async def main():
