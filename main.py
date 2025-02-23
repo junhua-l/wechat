@@ -12,7 +12,7 @@ SESSION_STRING = (
 )
 
 # Telegram 群组 ID（原群组）
-GROUP_ID = -1002273543161
+GROUP_ID = -4787978077
 # 新增的 Telegram 群组 ID
 GROUP_ID_2 = -1002474567771
 
